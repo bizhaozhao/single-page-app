@@ -31,4 +31,11 @@ describe('HousingLocationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show heading with location name', () => {
+    let expectedLocation = component.housingLocation;
+    const template = fixture.nativeElement as HTMLElement;
+    const heading = template.querySelector('h2.listing-heading');
+    expect(heading?.textContent).toBe(expectedLocation.name);
+  });
 });
