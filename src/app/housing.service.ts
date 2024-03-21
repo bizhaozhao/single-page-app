@@ -8,7 +8,7 @@ export class HousingService {
 
   constructor() { }
 
-  readonly url = 'http://localhost:3000/locations';
+  readonly url = 'http://localhost:4567/locations';
 
   async getAllHousingLocations(): Promise<HousingLocation[]> {
     const data = await fetch(this.url);
