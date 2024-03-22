@@ -1,0 +1,25 @@
+[
+	<% 100.times do |i| %>
+	{
+		"id": <%= i %>,
+		"name": "Capital Safe Towns",
+		"city": "Portland",
+		"state": "OR",
+		"photo": "https://angular.io/assets/images/tutorials/faa/webaliser-_TPTXZd9mOo-unsplash.jpg",
+		"availableUnits": 6,
+		"wifi": true,
+		"laundry": true
+	  },
+	<% end %>  
+	{
+	  "id": 101,
+	  "name": "Capital Safe Towns",
+	  "city": "Portland",
+	  "state": "OR",
+	  "photo": "https://angular.io/assets/images/tutorials/faa/webaliser-_TPTXZd9mOo-unsplash.jpg",
+	  "availableUnits": 6,
+	  "wifi": true,
+	  "laundry": true
+	}
+	
+  ]

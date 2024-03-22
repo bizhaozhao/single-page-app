@@ -1,0 +1,3 @@
+{
+	"correlationId": "<%= SecureRandom.uuid %>"
+}

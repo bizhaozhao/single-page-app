@@ -7,7 +7,13 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
 - test
+
 sast:
   stage: test
 include:
 - template: Security/SAST.gitlab-ci.yml
+
+.unit_test:
+  stage: test
+  script:
+    - ng test --karma-config karma.ci.conf.js --watch=false --code-coverage --include src/app
