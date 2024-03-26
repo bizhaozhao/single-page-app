@@ -21,11 +21,12 @@ unit_test:
     - npm install
     - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false
 
-.e2e:
-  image: node:latest
+e2e:
   stage: test
+  image: mcr.microsoft.com/playwright:v1.42.1-jammy
   script:
-    - npx ng e2e
+    - npm ci
+    - npm run e2e
 
 docker_build:
   variables:
