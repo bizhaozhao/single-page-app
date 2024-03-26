@@ -7,6 +7,7 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
 - test
+- deploy
 
 sast:
   stage: test
@@ -24,3 +25,21 @@ unit_test:
   stage: test
   script:
     - npx ng e2e
+
+docker_build:
+  variables:
+    # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+  stage: deploy # Part of a later stage
+  services:
+    - docker:20.10.11-dind
+  image: docker:20.10.11
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull --quiet $CI_REGISTRY_IMAGE:latest || true
+    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:latest
+  only:
+    - master
+  needs: ["test"]
