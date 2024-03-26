@@ -14,7 +14,8 @@ sast:
 include:
 - template: Security/SAST.gitlab-ci.yml
 
-unit_test:
+# TODO: Use image with chromedriver and chrome
+.unit_test:
   image: node:latest
   stage: test
   script:
