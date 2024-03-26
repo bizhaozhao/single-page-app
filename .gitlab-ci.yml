@@ -13,7 +13,14 @@ sast:
 include:
 - template: Security/SAST.gitlab-ci.yml
 
-.unit_test:
+unit_test:
+  image: node:latest
   stage: test
   script:
-    - ng test --karma-config karma.ci.conf.js --watch=false --code-coverage --include src/app
+    - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false
+
+.e2e:
+  image: node:latest
+  stage: test
+  script:
+    - npx ng e2e
