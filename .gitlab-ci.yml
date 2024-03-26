@@ -18,6 +18,7 @@ unit_test:
   image: node:latest
   stage: test
   script:
+    - npm install
     - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false
 
 .e2e:
