@@ -42,4 +42,4 @@ docker_build:
     - docker push $CI_REGISTRY_IMAGE:latest
   only:
     - master
-  needs: ["test"]
+  when: manual
