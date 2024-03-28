@@ -16,7 +16,7 @@ include:
 
 # TODO: Use image with chromedriver and chrome
 unit_test:
-  image: node:latest
+  image: node:21-alpine3.18
   stage: test
   script:
     - apk upgrade --no-cache --available && apk add --no-cache chromium-swiftshader ttf-freefont font-noto-emoji && apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community font-wqy-zenhei
