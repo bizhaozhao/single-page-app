@@ -24,7 +24,7 @@ unit_test:
     - export CHROME_PATH=/usr/lib/chromium/
     - export CHROMIUM_FLAGS="--disable-software-rasterizer --disable-dev-shm-usage"
     - npm ci
-    - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false --browser=ChromeHeadless
+    - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false
 
 e2e:
   stage: test
