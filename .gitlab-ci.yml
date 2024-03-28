@@ -16,7 +16,7 @@ include:
 
 # TODO: Use image with chromedriver and chrome
 unit_test:
-  image: mcr.microsoft.com/playwright:v1.42.1-jammy
+  image: juanje/node-chrome
   stage: test
   script:
     - npm ci
