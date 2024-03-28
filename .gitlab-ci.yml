@@ -15,11 +15,11 @@ include:
 - template: Security/SAST.gitlab-ci.yml
 
 # TODO: Use image with chromedriver and chrome
-.unit_test:
-  image: node:latest
+unit_test:
+  image: mcr.microsoft.com/playwright:v1.42.1-jammy
   stage: test
   script:
-    - npm install
+    - npm ci
     - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false
 
 e2e:
