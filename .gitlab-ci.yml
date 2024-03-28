@@ -16,9 +16,13 @@ include:
 
 # TODO: Use image with chromedriver and chrome
 unit_test:
-  image: juanje/node-chrome
+  image: node:latest
   stage: test
   script:
+    - apk upgrade --no-cache --available && apk add --no-cache chromium-swiftshader ttf-freefont font-noto-emoji && apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community font-wqy-zenhei
+    - export CHROME_BIN=/usr/bin/chromium-browser
+    - export CHROME_PATH=/usr/lib/chromium/
+    - export CHROMIUM_FLAGS="--disable-software-rasterizer --disable-dev-shm-usage"
     - npm ci
     - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false
 
