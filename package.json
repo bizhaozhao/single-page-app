@@ -10,6 +10,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng run angular.io-example:e2e",
+    "e2e:production": "ng run angular.io-example:e2e:production",
     "playwright": "npx playwright test",
     "e2e:debug": "playwright test --project chromium --headed",
     "serve:ssr:angular.io-example": "node dist/server/server.mjs"

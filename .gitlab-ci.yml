@@ -37,7 +37,7 @@ e2e:
   image: mcr.microsoft.com/playwright:v1.42.1-jammy
   script:
     - npm ci
-    - npm run e2e
+    - npm run e2e:production # Run with prod mode that uses hostnames, not localhost
 
 docker_build:
   variables:
