@@ -2,7 +2,7 @@
 	<% 100.times do |i| %>
 	{
 		"id": <%= i %>,
-		"name": "Capital Safe Towns",
+		"name": "Capital Safe Towns <%= i %>",
 		"city": "Portland",
 		"state": "OR",
 		"photo": "https://angular.io/assets/images/tutorials/faa/webaliser-_TPTXZd9mOo-unsplash.jpg",
