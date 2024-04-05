@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HousingLocation } from './housing-location';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class HousingService {
 
   constructor() { }
 
-  readonly url = process.env['CI'] ? 'http://backend:4567/locations' : 'http://localhost:4567/locations';
+  readonly url = `${environment.apiUrl}/locations`;
 
   async getAllHousingLocations(): Promise<HousingLocation[]> {
     const data = await fetch(this.url);
