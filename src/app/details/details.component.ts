@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -57,10 +58,11 @@ export class DetailsComponent {
     email: new FormControl<string>('')
   });
 
-  constructor() {
+  constructor(private title: Title) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
     this.housingService.getHousingLocationById(housingLocationId).then(housingLocation => {
       this.housingLocation = housingLocation;
+      this.title.setTitle(`House details - ${housingLocation?.name}`)
     });
   }
 
