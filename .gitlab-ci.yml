@@ -27,6 +27,8 @@ unit_test:
     - npx ng test --karma-config karma.ci.conf.js --include src/app --watch=false
 
 e2e:
+  variables:
+    models: "['locations']"
   services:
     - registry.gitlab.com/samuel-garratt/schemaless_rest_api
   stage: test
