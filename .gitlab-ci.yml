@@ -29,8 +29,10 @@ unit_test:
 e2e:
   variables:
     models: "['locations']"
+    CI: true
   services:
-    - registry.gitlab.com/samuel-garratt/schemaless_rest_api
+    - name: registry.gitlab.com/samuel-garratt/schemaless_rest_api
+      alias: backend
   stage: test
   image: mcr.microsoft.com/playwright:v1.42.1-jammy
   script:

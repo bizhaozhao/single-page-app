@@ -8,7 +8,7 @@ export class HousingService {
 
   constructor() { }
 
-  readonly url = 'http://localhost:4567/locations';
+  readonly url = process.env['CI'] ? 'http://backend:4567/locations' : 'http://localhost:4567/locations';
 
   async getAllHousingLocations(): Promise<HousingLocation[]> {
     const data = await fetch(this.url);
