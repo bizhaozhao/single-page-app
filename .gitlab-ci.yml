@@ -37,6 +37,7 @@ e2e:
   stage: test
   image: mcr.microsoft.com/playwright:v1.42.1-jammy
   script:
+    - mkdir builds
     - cp file_sv.yaml builds/file_sv.yaml
     - cp -r mock_backend builds/mock_backend
     - ls builds
