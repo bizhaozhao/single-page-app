@@ -30,6 +30,7 @@ e2e:
   variables:
     models: "['locations']"
     CI: true
+    CI_DEBUG_SERVICES: "true"
   services:
     - #name: registry.gitlab.com/samuel-garratt/schemaless_rest_api
       name: registry.gitlab.com/samuel-garratt/file_sv
