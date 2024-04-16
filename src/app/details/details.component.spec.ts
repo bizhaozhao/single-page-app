@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DetailsComponent } from './details.component';
-import { RouterModule } from '@angular/router';
 import { HousingService } from '../housing.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DetailsComponent', () => {
   let component: DetailsComponent;
@@ -11,7 +11,11 @@ describe('DetailsComponent', () => {
  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailsComponent, RouterTestingModule]
+      imports: [
+        DetailsComponent, 
+        RouterTestingModule,
+        HttpClientTestingModule 
+      ],
     })
     .compileComponents();
     

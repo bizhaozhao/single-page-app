@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HousingLocation } from './housing-location';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, firstValueFrom, lastValueFrom, take } from 'rxjs';
+import { lastValueFrom, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
