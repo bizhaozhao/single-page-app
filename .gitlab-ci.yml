@@ -31,6 +31,7 @@ e2e:
   variables:
     models: "['locations']"
     CI: true
+    CI_DEBUG_SERVICES: "true"
   services:
     - name: registry.gitlab.com/samuel-garratt/single-page-app-demo:mock_backend
       alias: backend
