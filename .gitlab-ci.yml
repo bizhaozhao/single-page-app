@@ -29,18 +29,13 @@ unit_test:
 
 e2e:
   variables:
-    models: "['locations']"
     CI: true
-    CI_DEBUG_SERVICES: "true"
   services:
     - name: registry.gitlab.com/samuel-garratt/single-page-app-demo:mock_backend
       alias: backend
   stage: test
   image: mcr.microsoft.com/playwright:v1.42.1-jammy
   script:
-    # - cp file_sv.yaml /builds/$CI_PROJECT_NAMESPACE/file_sv.yaml
-    # - cp -r mock_backend /builds/$CI_PROJECT_NAMESPACE/mock_backend
-    # - ls /builds/$CI_PROJECT_NAMESPACE
     - npm ci
     - npm run e2e:production # Run with prod mode that uses hostnames, not localhost
   needs: 
