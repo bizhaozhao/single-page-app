@@ -6,6 +6,7 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
+- setup
 - test
 - deploy
 
@@ -30,19 +31,36 @@ e2e:
   variables:
     models: "['locations']"
     CI: true
-    CI_DEBUG_SERVICES: "true"
   services:
     - #name: registry.gitlab.com/samuel-garratt/schemaless_rest_api
-      name: registry.gitlab.com/samuel-garratt/file_sv
+      name: registry.gitlab.com/samuel-garratt/single-page-app-demo:mock_backend
       alias: backend
   stage: test
   image: mcr.microsoft.com/playwright:v1.42.1-jammy
   script:
-    - cp file_sv.yaml /builds/$CI_PROJECT_NAMESPACE/file_sv.yaml
-    - cp -r mock_backend /builds/$CI_PROJECT_NAMESPACE/mock_backend
-    - ls /builds/$CI_PROJECT_NAMESPACE
+    # - cp file_sv.yaml /builds/$CI_PROJECT_NAMESPACE/file_sv.yaml
+    # - cp -r mock_backend /builds/$CI_PROJECT_NAMESPACE/mock_backend
+    # - ls /builds/$CI_PROJECT_NAMESPACE
     - npm ci
     - npm run e2e:production # Run with prod mode that uses hostnames, not localhost
+  needs: 
+   - backend_mock  
+
+backend_mock:
+  variables:
+    # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+  stage: setup
+  services:
+    - docker:20.10.11-dind
+  image: docker:20.10.11
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull --quiet $CI_REGISTRY_IMAGE:mock_backend || true
+    - docker build -t $CI_REGISTRY_IMAGE:mock_backend -f file_sv.Dockerfile .
+    # If used alot would be better to tag via branch name
+    - docker push $CI_REGISTRY_IMAGE:mock_backend 
 
 docker_build:
   variables:
