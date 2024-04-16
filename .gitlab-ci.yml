@@ -32,8 +32,7 @@ e2e:
     models: "['locations']"
     CI: true
   services:
-    - #name: registry.gitlab.com/samuel-garratt/schemaless_rest_api
-      name: registry.gitlab.com/samuel-garratt/single-page-app-demo:mock_backend
+    - name: registry.gitlab.com/samuel-garratt/single-page-app-demo:mock_backend
       alias: backend
   stage: test
   image: mcr.microsoft.com/playwright:v1.42.1-jammy
