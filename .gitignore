@@ -47,3 +47,7 @@ Thumbs.db
 
 # Environment specific config
 src/assets/config/
+
+# Terraform
+*terraform.tfstate*
+**/.terraform/*
