@@ -1,3 +1,9 @@
 Dockerfile
 .gitlab-ci.yml
+.angular
+dist
 tests
+infrastructure
+node_modules
+test-results
+playwright-report

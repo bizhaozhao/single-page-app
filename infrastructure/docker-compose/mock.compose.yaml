@@ -1,6 +1,6 @@
 services:
   web:
-    build: .
+    build: ../..
     ports:
       - "4000:4000"
   backend:
@@ -8,4 +8,4 @@ services:
     ports:
       - "4567:4567"
     volumes:
-      - .:/home/app/serve
+      - ../..:/home/app/serve
