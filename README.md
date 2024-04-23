@@ -32,3 +32,15 @@ ng serve
 docker run -v $(pwd):/home/app/serve -p 4567:4567 --rm -it registry.gitlab.com/samuel-garratt/file_sv
 ```
 
+* Run unit tests
+
+```
+ng test
+```
+
+* Run e2e tests
+Ensure a backend is up at localhost:4567 and then run
+
+```
+
+```
