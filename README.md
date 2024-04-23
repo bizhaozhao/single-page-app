@@ -12,10 +12,18 @@ npm install
 docker run -v $(pwd):/home/app/serve -p 4567:4567 --rm -it registry.gitlab.com/samuel-garratt/schemaless_rest_api
 ```
 
-* Run the single page application
+or to run on different port so UI can switch between this and the mock
 
 ```
-ng run
+docker run -v $(pwd):/home/app/serve -p 3000:4567 --rm -it registry.gitlab.com/samuel-garratt/schemaless_rest_api
+```
+
+* Run the single page application
+
+Set `apiUrl` environment variable to change where backend is. 
+
+```
+ng serve
 ```
 
 * Run mock backend 

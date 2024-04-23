@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import routeConfig from './routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withFetch(),
     ),
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimations(),
   ]
 };
