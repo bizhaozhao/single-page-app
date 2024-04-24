@@ -1,10 +1,21 @@
 A very simple demo Single Page Application. 
 
-* Install dependencies
+# Prequisities
+* Install docker (allow volumes on the workspace you are serving from)
+* To run UI without docker install node and angular (`npm install -g @angular/cli`)
 
-```
-npm install
-```
+# Quick start
+To quickly run the application clone this repo, navigate to `infrastructure/docker-compose` and run 
+
+* `docker-compose -f mock.compose.yaml up` to spin up the UI with mock backend 
+* `docker-compose up` to spin up UI with real backend
+
+* See the system up and running
+Open `http://localhost:4000` to see the UI
+Open `http://localhost:4567/locations` to see the Backend
+* Move files from `mock_backend/locations/strategies` up one folder to be directly under `mock_backend/locations` and move `list.json` out to have the mock backend updated. Refresh UI to see the change
+
+# Other configurations
 
 * Run real service that can store and return house location data
 
@@ -37,6 +48,12 @@ See the list of locations by performing a GET to `http://localhost/locations`.
 
 * Run the single page application
 
+  * Install dependencies
+
+```
+npm install
+```
+  * Host server
 Set `apiUrl` environment variable to change where backend is. 
 
 ```
